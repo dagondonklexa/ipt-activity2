@@ -37,10 +37,6 @@ class ProductController extends Controller
                      ->with('success', 'Product added successfully');
     }
 
-    // public function show(Product $product)
-    // {
-        
-    // }
 
     public function edit(Product $product)
     {

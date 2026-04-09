@@ -3,34 +3,74 @@
 @section('title', 'Product List')
 
 @section('content')
-<h2>Products</h2>
+<div class="flex flex-col justify-center items-center pt-10 px-4 gap-6 max-w-6xl mx-auto">
 
-<a href="{{ route('products.create') }}" >Add Product</a>
+    <!-- Header -->
+    <h2 class="font-bold text-4xl text-gray-800">Products</h2>
 
-<table border="1" cellpading="10">
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Category</th>
-        <th>Action</th>
-    </tr>
+    <!-- Top Controls: Add Product -->
+    <div class="w-full flex mb-4 gap-5">
+        <div class="flex-1 flex">
+            <a href="{{ route('products.create') }}"
+            class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-full hover:bg-blue-600 transition">
+                + Add Product
+            </a>
+        </div>
+        <div class="flex-1 flex justify-end">
+            <a href="{{ route('categories.index') }}"
+            class="px-6 py-3 bg-emerald-600  text-white font-semibold rounded-full hover:bg-emerald-700 transition">
+                + Category
+            </a>
+        </div>
+        
+        
+    </div>
 
-    @foreach($products as $product)
-    <tr>
-        <td>{{ $product->name }}</td>
-        <td>{{ $product->price }}</td>
-        <td>{{ $product->category->cat_name }}</td>
-        <td>
-            <a href="{{ route('products.edit', $product->id) }}">Edit</a>
+    <!-- Table Wrapper -->
+    <div class="overflow-x-auto w-full rounded-lg border border-gray-300 shadow-sm">
+        <table class="w-full table-auto border-collapse">
+            
+            <!-- Table Head -->
+            <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
+                <tr>
+                    <th class="px-6 py-3 text-left border-b border-gray-300">Name</th>
+                    <th class="px-6 py-3 text-left border-b border-gray-300">Price</th>
+                    <th class="px-6 py-3 text-left border-b border-gray-300">Category</th>
+                    <th class="px-6 py-3 text-center border-b border-gray-300">Action</th>
+                </tr>
+            </thead>
 
-            <form action="{{ route('products.destroy', $product->id) }}"
-                  method="POST" style="display:inline">
-                @csrf 
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
-</table>
+            <!-- Table Body -->
+            <tbody class="divide-y divide-gray-200">
+                @foreach($products as $product)
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-3 text-left">{{ $product->name }}</td>
+                    <td class="px-6 py-3 text-left">₱{{ $product->price }}</td>
+                    <td class="px-6 py-3 text-left">{{ $product->category->cat_name }}</td>
+                    <td class="px-6 py-3 text-center flex justify-center gap-2">
+                        <!-- Edit Button (Green) -->
+                        <a href="{{ route('products.edit', $product->id) }}"
+                           class="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition">
+                           Edit
+                        </a>
+
+                        <!-- Delete Button (Dark Red) -->
+                        <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                    class="px-3 py-1 bg-red-800 text-white rounded hover:bg-red-900 transition">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
 @endsection

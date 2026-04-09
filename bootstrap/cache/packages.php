@@ -1,4 +1,32 @@
 <?php return array (
+  'blade-ui-kit/blade-heroicons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BladeUI\\Heroicons\\BladeHeroiconsServiceProvider',
+    ),
+  ),
+  'blade-ui-kit/blade-icons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BladeUI\\Icons\\BladeIconsServiceProvider',
+    ),
+  ),
+  'ddfsn/blade-components' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'DistortedFusion\\BladeComponents\\LayoutServiceProvider',
+    ),
+  ),
+  'distortedfusion/blade-colors' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'DistortedFusion\\BladeColors\\BladeColorsServiceProvider',
+    ),
+  ),
   'laravel/pail' => 
   array (
     'providers' => 
