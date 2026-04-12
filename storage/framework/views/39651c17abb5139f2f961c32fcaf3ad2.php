@@ -1,3 +1,10 @@
+
+
+
+<?php $__env->startSection('title', 'My Site | Create Product'); ?>
+
+
+<?php $__env->startSection("content"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,20 +13,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Add Product Form</title>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
-
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+<body>
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex justify-center items-center container mx-auto flex-col my-30">
         <div class="mb-8">
             <h2 class="text-2xl font-bold text-gray-800">Add New Product</h2>
             <p class="text-gray-500 text-sm mt-1">Fill in the details below to add a product to your inventory.</p>
         </div>
 
-        <form method="POST" action="<?php echo e(route('products.store')); ?>" class="space-y-5">
+        <form method="POST" action="<?php echo e(route('products.store')); ?>" class="space-y-5 w-full">
             <!-- CSRF Token (Laravel) -->
             <?php echo csrf_field(); ?>
 
             <!-- Product Name -->
-            <div>
+            <div class="w-ful">
                 <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Product Name</label>
                 <input 
                     type="text" 
@@ -28,6 +34,16 @@
                     placeholder="e.g. Wireless Headphones" 
                     class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400"
                 >
+                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <p class="text-red-500 text-sm py-2"><?php echo e($message); ?></p>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </div>
 
             <!-- Price -->
@@ -42,6 +58,16 @@
                         placeholder="0.00" 
                         class="w-full pl-8 pr-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400"
                     >
+                    <?php $__errorArgs = ['price'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <p class="text-red-500 text-sm py-2"><?php echo e($message); ?></p>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 </div>
             </div>
 
@@ -61,6 +87,16 @@
                         </option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
+                 <?php $__errorArgs = ['category_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <p class="text-red-500 text-sm py-2"><?php echo e($message); ?></p>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 <!-- Custom Arrow Icon for Select -->
                 <div class="relative">
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 -top-10">
@@ -85,8 +121,11 @@
                     Cancel
                 </a>
             </div>
+            
         </form>
     </div>
 
 </body>
-</html><?php /**PATH C:\Users\Administrator\ipt-activity2\resources\views/products/create.blade.php ENDPATH**/ ?>
+</html>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("layouts.app", array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Administrator\ipt-activity2\resources\views/products/create.blade.php ENDPATH**/ ?>

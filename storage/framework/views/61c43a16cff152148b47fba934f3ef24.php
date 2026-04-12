@@ -1,3 +1,9 @@
+
+
+
+<?php $__env->startSection('title', 'My Site | Create Category'); ?>
+
+<?php $__env->startSection("content"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +12,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Add Category</title>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
-
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+<body>
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex flex-col justify-center items-center container mx-auto mt-20">
         <div class="mb-8 text-center">
             <h2 class="text-2xl font-bold text-gray-800">Add Category</h2>
             <p class="text-gray-500 text-sm mt-1">Organize your products by creating a new category.</p>
@@ -57,7 +62,7 @@
                     Save Category
                 </button>
                 <a 
-                    href="<?php echo e(url()->previous()); ?>"
+                    href="<?php echo e(route('categories.index')); ?>"
                     class="block w-full text-center mt-3 text-sm text-gray-500 hover:text-gray-700 font-medium transition-colors"
                 >
                     Cancel and go back
@@ -67,4 +72,6 @@
     </div>
 
 </body>
-</html><?php /**PATH C:\Users\Administrator\ipt-activity2\resources\views/categories/create.blade.php ENDPATH**/ ?>
+</html>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("layouts.app", array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Administrator\ipt-activity2\resources\views/categories/create.blade.php ENDPATH**/ ?>

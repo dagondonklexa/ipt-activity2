@@ -1,12 +1,12 @@
 
 
-<?php $__env->startSection('title', 'Product List'); ?>
+<?php $__env->startSection('title', 'My Site | Product List'); ?>
 
 <?php $__env->startSection('content'); ?>
-<div class="flex flex-col justify-center items-center pt-10 px-4 gap-6 max-w-6xl mx-auto">
+<div class="container flex flex-col justify-center items-center pt-10 px-4 gap-6 max-w-6xl mx-auto">
 
     <!-- Header -->
-    <h2 class="font-bold text-4xl text-gray-800">Products</h2>
+    <h2 class="font-bold text-4xl text-gray-800 mt-20">Products</h2>
 
     <!-- Top Controls: Add Product -->
     <div class="w-full flex mb-4 gap-5">

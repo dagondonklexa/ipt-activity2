@@ -1,3 +1,8 @@
+
+
+<?php $__env->startSection('title', 'My Site | Category Lists'); ?>
+
+<?php $__env->startSection("content"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +11,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Categories</title>
 </head>
-<body class="bg-gray-50 min-h-screen p-6 md:p-12">
-
-    <div class="max-w-4xl mx-auto">
+<body>
+    <div class="max-w-4xl mx-auto py-20">
         <!-- Header Section -->
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
             <div>
@@ -23,7 +27,7 @@
                 Add Category
             </a>
             <a 
-                    href="<?php echo e(url()->previous()); ?>"
+                    href="<?php echo e(route('products.index')); ?>"
                     class="block w-full text-center mt-3 text-md text-gray-500 hover:text-gray-700 font-bold transition-colors border border-gray-200 p-2 rounded-lg"
                 >
                     Back
@@ -73,4 +77,6 @@
     </div>
 
 </body>
-</html><?php /**PATH C:\Users\Administrator\ipt-activity2\resources\views/categories/index.blade.php ENDPATH**/ ?>
+</html>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("layouts.app", array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Administrator\ipt-activity2\resources\views/categories/index.blade.php ENDPATH**/ ?>
