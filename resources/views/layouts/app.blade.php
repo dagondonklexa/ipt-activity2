@@ -11,16 +11,16 @@
         @include('partials.header')
         <main class="flex-1 ">
             @if(session('success'))
-            <div class="bg-green-100 text-green-700 p-3 rounded mb-4" id="successMessage text-center">
-                {{ session('success') }}
-            </div>
+                <div class="bg-green-100 text-green-700 p-3 rounded mb-4  text-center flex justify-center items-center fixed top-16 left-0 w-full" id="successMessage">
+                    {{ session('success') }}
+                </div>
 
-            <script>
-                setTimeout(() => {
-                    document.getElementById('successMessage')?.remove();
-                }, 2000);
-            </script>
-        @endif  
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('successMessage')?.remove();
+                    }, 3000);
+                </script>
+            @endif  
             @yield('content')
         </main>
          @include("partials.footer")
