@@ -11,18 +11,18 @@
     <title>Add Product Form</title>
 </head>
 <body>
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex justify-center items-center container mx-auto flex-col my-20">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex justify-center items-center container mx-auto flex-col my-30">
         <div class="mb-8">
             <h2 class="text-2xl font-bold text-gray-800">Add New Product</h2>
             <p class="text-gray-500 text-sm mt-1">Fill in the details below to add a product to your inventory.</p>
         </div>
 
-        <form method="POST" action="{{ route('products.store') }}" class="space-y-5">
+        <form method="POST" action="{{ route('products.store') }}" class="space-y-5 w-full">
             <!-- CSRF Token (Laravel) -->
             @csrf
 
             <!-- Product Name -->
-            <div>
+            <div class="w-ful">
                 <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Product Name</label>
                 <input 
                     type="text" 
@@ -31,6 +31,9 @@
                     placeholder="e.g. Wireless Headphones" 
                     class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400"
                 >
+                @error('name')
+                    <p class="text-red-500 text-sm py-2">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Price -->
@@ -45,6 +48,9 @@
                         placeholder="0.00" 
                         class="w-full pl-8 pr-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400"
                     >
+                    @error('price')
+                        <p class="text-red-500 text-sm py-2">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -63,6 +69,9 @@
                         </option>
                     @endforeach
                 </select>
+                 @error('category_id')
+                    <p class="text-red-500 text-sm py-2">{{ $message }}</p>
+                @enderror
                 <!-- Custom Arrow Icon for Select -->
                 <div class="relative">
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 -top-10">
