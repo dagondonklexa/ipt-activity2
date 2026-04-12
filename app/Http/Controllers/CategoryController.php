@@ -26,9 +26,9 @@ class CategoryController extends Controller
         ]);
 
         if(Category::where('cat_name', $request->cat_name)->exists()) {
-            return redirect()->back()->withErrors(['cat_name' => 'The category name has already been taken.'])->withInput();
+            return redirect()->back()->withErrors(['cat_name' => 'The category name has already been taken.']);
         }
-    
+
         Category::create($request->all());
 
         return redirect()->route('categories.index')->with('success', 'Category added successfully');
