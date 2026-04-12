@@ -33,6 +33,9 @@
                     placeholder="e.g. Electronics" 
                     class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all placeholder:text-gray-400"
                 >
+                @error('cat_name')
+                    <p class="text-red-500 text-sm py-2">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Category Color -->
@@ -51,6 +54,9 @@
                     </div>
                 </div>
                 <p class="text-xs text-gray-400 mt-2">Used for labels</p>
+                @error('cat_color')
+                    <p class="text-red-500 text-sm py-2">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Action Buttons -->

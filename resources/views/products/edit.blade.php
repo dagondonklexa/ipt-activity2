@@ -12,9 +12,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Product Management</title>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-6 space-y-12">
+<body>
     <!-- EDIT PRODUCT FORM -->
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8 container mx-auto mt-20">
         <div class="mb-8">
             <h2 class="text-2xl font-bold text-gray-800">Edit Product</h2>
             <p class="text-gray-500 text-sm mt-1">Update the details for <strong>{{ $product->name }}</strong>.</p>
@@ -35,6 +35,9 @@
                     value="{{ $product->name }}"
                     class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                 >
+                @error('name')
+                    <p class="text-red-500 text-sm py-2">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Price -->
@@ -49,6 +52,9 @@
                         value="{{ $product->price }}"
                         class="w-full pl-8 pr-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                     >
+                    @error('price')
+                        <p class="text-red-500 text-sm py-2">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -67,6 +73,9 @@
                             </option>
                         @endforeach 
                     </select>
+                     @error('category_id')
+                        <p class="text-red-500 text-sm py-2">{{ $message }}</p>
+                    @enderror
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                     </div>

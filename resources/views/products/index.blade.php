@@ -45,7 +45,7 @@
                 @foreach($products as $product)
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-3 text-left">{{ $product->name }}</td>
-                    <td class="px-6 py-3 text-left">₱{{ $product->price }}</td>
+                    <td class="px-6 py-3 text-left">₱ {{ $product->price }}</td>
                     <td class="px-6 py-3 text-left">{{ $product->category->cat_name }}</td>
                     <td class="px-6 py-3 text-center flex justify-center gap-2">
                         <!-- Edit Button (Green) -->
@@ -55,7 +55,7 @@
                         </a>
 
                         <!-- Delete Button (Dark Red) -->
-                        <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Delete this item?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit"

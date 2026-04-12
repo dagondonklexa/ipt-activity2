@@ -21,14 +21,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cat_name' => 'required',
-            'cat_color' => 'required'
+            'cat_name' => ['required' , 'min:3' , 'max:255'],
+            'cat_color' => ['required' , 'min:3' , 'max:255']
         ]);
 
-    Category::create($request->all());
+        Category::create($request->all());
 
-    return redirect()->route('categories.index')
-                     ->with('success', 'Category added successfully');
+        return redirect()->route('categories.index')->with('success', 'Category added successfully');
     }
 }
 
