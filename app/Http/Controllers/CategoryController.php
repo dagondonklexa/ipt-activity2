@@ -24,11 +24,11 @@ class CategoryController extends Controller
             'cat_name' => ['required' , 'min:3' , 'max:255'],
             'cat_color' => ['required' , 'min:3' , 'max:255']
         ]);
-        
+
         if(Category::where('cat_name', $request->cat_name)->exists()) {
             return redirect()->back()->withErrors(['cat_name' => 'The category name has already been taken.'])->withInput();
         }
-
+    
         Category::create($request->all());
 
         return redirect()->route('categories.index')->with('success', 'Category added successfully');
