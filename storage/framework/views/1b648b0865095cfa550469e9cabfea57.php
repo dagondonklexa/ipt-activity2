@@ -64,6 +64,17 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </div>
+
+                    <form action="<?php echo e(route('categories.destroy', $category->id)); ?>" method="POST" onsubmit="return confirm('Delete this category?')">
+                        <?php echo csrf_field(); ?>
+                        <?php echo method_field('DELETE'); ?>
+                        <button type="submit" class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition-colors">
+                            <button type="submit"
+                                    class="px-3 py-1 bg-red-800 text-white rounded hover:bg-red-900 transition">
+                                Delete
+                            </button>
+                        </button>
+                    </form>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
