@@ -46,7 +46,7 @@
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-3 text-left">{{ $product->name }}</td>
                     <td class="px-6 py-3 text-left">₱ {{ $product->price }}</td>
-                    <td class="px-6 py-3 text-left">{{ $product->category->cat_name }}</td>
+                    <td class="px-6 py-3 text-left">{{ $product->category?->cat_name ?? 'No Category' }}</td>
                     <td class="px-6 py-3 text-center flex justify-center gap-2">
                         <!-- Edit Button (Green) -->
                         <a href="{{ route('products.edit', $product->id) }}"

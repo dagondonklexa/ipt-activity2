@@ -20,26 +20,20 @@
                 <p class="text-gray-500 mt-1">Manage and organize your product classifications.</p>
             </div>
             <div>
-            <a href="{{ route('categories.create') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all active:scale-95">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-                Add Category
-            </a>
-            <a 
-                    href="{{ route('products.index') }}"
-                    class="block w-full text-center mt-3 text-md text-gray-500 hover:text-gray-700 font-bold transition-colors border border-gray-200 p-2 rounded-lg"
-                >
-                    Back
+                <a href="{{ route('categories.create') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow-sm transition-all active:scale-95">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    Add Category
                 </a>
-        </div>
+            </div>
         </div>
 
         <!-- Categories Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($categories as $category)
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:shadow-md transition-shadow flex items-center justify-between group">
-                    <div class="flex items-center space-x-4">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:shadow-md transition-shadow">
+                    <div class="flex items-center space-x-4 mb-4">
                         <!-- Dynamic Color Swatch -->
                         <div 
                             class="w-10 h-10 rounded-full border border-gray-100 shadow-inner flex-shrink-0"
@@ -47,7 +41,7 @@
                         ></div>
                         
                         <div>
-                            <h3 class="font-bold text-gray-800 group-hover:text-emerald-600 transition-colors">
+                            <h3 class="font-bold text-gray-800">
                                 {{ $category->cat_name }}
                             </h3>
                             <code class="text-xs text-gray-400 font-mono uppercase">
@@ -56,23 +50,21 @@
                         </div>
                     </div>
 
-                    <!-- Simple Action Icon (Optional) -->
-                    <div class="text-gray-300 group-hover:text-gray-400">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </div>
-
-                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Delete this category?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="absolute top-2 right-2 text-red-500 hover:text-red-700 transition-colors">
+                    <!-- Action Buttons -->
+                    <div class="flex gap-2">
+                        <a href="{{ route('categories.edit', $category->id) }}"
+                           class="flex-1 px-3 py-2 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600 transition text-center">
+                           Edit
+                        </a>
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Delete this category?')" class="flex-1">
+                            @csrf
+                            @method('DELETE')
                             <button type="submit"
-                                    class="px-3 py-1 bg-red-800 text-white rounded hover:bg-red-900 transition">
+                                    class="w-full px-3 py-2 bg-red-800 text-white text-sm font-semibold rounded hover:bg-red-900 transition">
                                 Delete
                             </button>
-                        </button>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             @endforeach
 
@@ -82,6 +74,16 @@
                     <p class="text-gray-500">No categories found. Start by adding one!</p>
                 </div>
             @endif
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-8">
+            <a 
+                href="{{ route('products.index') }}"
+                class="inline-block text-md text-gray-500 hover:text-gray-700 font-bold transition-colors border border-gray-200 px-4 py-2 rounded-lg"
+            >
+                Back
+            </a>
         </div>
     </div>
 
