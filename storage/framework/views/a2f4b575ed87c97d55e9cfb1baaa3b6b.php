@@ -45,7 +45,7 @@
                 <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-3 text-left"><?php echo e($product->name); ?></td>
-                    <td class="px-6 py-3 text-left">₱<?php echo e($product->price); ?></td>
+                    <td class="px-6 py-3 text-left">₱ <?php echo e($product->price); ?></td>
                     <td class="px-6 py-3 text-left"><?php echo e($product->category->cat_name); ?></td>
                     <td class="px-6 py-3 text-center flex justify-center gap-2">
                         <!-- Edit Button (Green) -->
@@ -55,7 +55,7 @@
                         </a>
 
                         <!-- Delete Button (Dark Red) -->
-                        <form action="<?php echo e(route('products.destroy', $product->id)); ?>" method="POST">
+                        <form action="<?php echo e(route('products.destroy', $product->id)); ?>" method="POST" onsubmit="return confirm('Delete this item?')">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('DELETE'); ?>
                             <button type="submit"

@@ -11,7 +11,7 @@ Route::get('/', function () {
 });
 
 Route::resource('categories', CategoryController::class)->only([
-    'index', 'create', 'store'
+    'index', 'create', 'store' , 'destroy'
 ]);
 
 Route::resource('products', ProductController::class)->except(['show']);

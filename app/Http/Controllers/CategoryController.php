@@ -21,14 +21,23 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cat_name' => 'required',
-            'cat_color' => 'required'
+            'cat_name' => ['required' , 'min:3' , 'max:255'],
+            'cat_color' => ['required' , 'min:3' , 'max:255']
         ]);
 
-    Category::create($request->all());
+        if(Category::where('cat_name', $request->cat_name)->exists()) {
+            return redirect()->back()->withErrors(['cat_name' => 'The category name has already been taken.']);
+        }
 
-    return redirect()->route('categories.index')
-                     ->with('success', 'Category added successfully');
+        Category::create($request->all());
+
+        return redirect()->route('categories.index')->with('success', 'Category added successfully');
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
     }
 }
 
