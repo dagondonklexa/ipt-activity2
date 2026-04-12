@@ -1,6 +1,9 @@
 
 @extends("layouts.app")
 
+@section('title', 'My Site | Create Product')
+
+
 @section("content")
 <!DOCTYPE html>
 <html lang="en">
@@ -96,6 +99,7 @@
                     Cancel
                 </a>
             </div>
+            
         </form>
     </div>
 

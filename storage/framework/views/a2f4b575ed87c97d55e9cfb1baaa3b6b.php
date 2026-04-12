@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title', 'Product List'); ?>
+<?php $__env->startSection('title', 'My Site | Product List'); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="container flex flex-col justify-center items-center pt-10 px-4 gap-6 max-w-6xl mx-auto">

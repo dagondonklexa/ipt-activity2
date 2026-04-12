@@ -1,5 +1,7 @@
 
 
+<?php $__env->startSection('title', 'My Site | Category Lists'); ?>
+
 <?php $__env->startSection("content"); ?>
 <!DOCTYPE html>
 <html lang="en">

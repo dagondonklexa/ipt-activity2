@@ -1,6 +1,9 @@
 
 
 
+<?php $__env->startSection('title', 'My Site | Create Product'); ?>
+
+
 <?php $__env->startSection("content"); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,6 +121,7 @@ unset($__errorArgs, $__bag); ?>
                     Cancel
                 </a>
             </div>
+            
         </form>
     </div>
 

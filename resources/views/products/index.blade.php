@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Product List')
+@section('title', 'My Site | Product List')
 
 @section('content')
 <div class="container flex flex-col justify-center items-center pt-10 px-4 gap-6 max-w-6xl mx-auto">

@@ -1,6 +1,8 @@
 
 @extends("layouts.app")
 
+@section('title', 'My Site | Edit Product')
+
 @section("content")
 <!DOCTYPE html>
 <html lang="en">

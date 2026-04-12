@@ -29,7 +29,11 @@ class ProductController extends Controller
             'name' => ['required', 'min:3' , 'max:255'],    
             'price' => ['required', 'numeric' , 'min:1'],
             'category_id' => ['required']
-        ]);
+        ],
+        [
+            "category_id.required" => "The category field is required."
+        ]
+        );
 
         Product::create($request->all());
 

@@ -1,4 +1,5 @@
-<header class="bg-white border-b shadow-sm fixed top-0 left-0 w-full">
+
+<header class="bg-white border-b shadow-lg sticky top-0 left-0 w-full border-none">
     <div class="container mx-auto h-16 flex items-center justify-between px-40">
 
 

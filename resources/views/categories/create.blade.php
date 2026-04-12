@@ -1,6 +1,8 @@
 
 @extends("layouts.app")
 
+@section('title', 'My Site | Create Category')
+
 @section("content")
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +12,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Add Category</title>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
-
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+<body>
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex flex-col justify-center items-center container mx-auto mt-20">
         <div class="mb-8 text-center">
             <h2 class="text-2xl font-bold text-gray-800">Add Category</h2>
             <p class="text-gray-500 text-sm mt-1">Organize your products by creating a new category.</p>
