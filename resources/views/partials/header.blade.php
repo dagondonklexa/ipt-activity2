@@ -1,23 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+<header class="bg-white border-b shadow-sm">
+    <div class="container mx-auto h-16 flex items-center justify-between px-40">
+
+
+        <a href="{{ url('/') }}" class="font-extrabold text-xl">
             Product Management
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        
+        <nav class="hidden md:flex gap-6 text-gray-700">
+            <a href="{{ route('products.index') }}" class="hover:text-black hover:underline hover:scale-110 transition-all duration-500">
+                Products
+            </a>
+            <a href="{{ route('categories.index') }}" class="hover:text-black hover:underline hover:scale-110 transition-all  duration-500">
+                Categories
+            </a>
+        </nav>
 
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                 <a class="nav-link" href="{{ route('products.index') }}">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories.index') }}">Categories</a>
-                </li>
-            </ul>
-        </div>
+
+        <button id="menuBtn" class="md:hidden text-2xl">
+            ☰
+        </button>
     </div>
-</nav>
+
+
+    <div id="mobileMenu" class="hidden md:hidden border-t px-4 py-3 space-y-3">
+        <a href="{{ route('products.index') }}" class="block">
+            Products
+        </a>
+        <a href="{{ route('categories.index') }}" class="block">
+            Categories
+        </a>
+    </div>
+</header>
+
+<!-- Simple toggle script -->
+<script>
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+</script>

@@ -1,3 +1,7 @@
+
+@extends("layouts.app")
+
+@section("content")
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +61,7 @@
                     Save Category
                 </button>
                 <a 
-                    href="{{ url()->previous() }}"
+                    href="{{ route('categories.index') }}"
                     class="block w-full text-center mt-3 text-sm text-gray-500 hover:text-gray-700 font-medium transition-colors"
                 >
                     Cancel and go back
@@ -68,3 +72,4 @@
 
 </body>
 </html>
+@endsection

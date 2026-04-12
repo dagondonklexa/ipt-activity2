@@ -1,3 +1,7 @@
+
+@extends("layouts.app")
+
+@section("content")
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +10,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Add Product Form</title>
 </head>
-<body class="bg-gray-50 min-h-screen flex items-center justify-center p-6">
-
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+<body>
+    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex justify-center items-center container mx-auto flex-col my-20">
         <div class="mb-8">
             <h2 class="text-2xl font-bold text-gray-800">Add New Product</h2>
             <p class="text-gray-500 text-sm mt-1">Fill in the details below to add a product to your inventory.</p>
@@ -89,3 +92,4 @@
 
 </body>
 </html>
+@endsection

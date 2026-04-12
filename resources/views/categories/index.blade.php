@@ -1,3 +1,6 @@
+@extends("layouts.app")
+
+@section("content")
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Categories</title>
 </head>
-<body class="bg-gray-50 min-h-screen p-6 md:p-12">
-
-    <div class="max-w-4xl mx-auto">
+<body>
+    <div class="max-w-4xl mx-auto py-20">
         <!-- Header Section -->
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
             <div>
@@ -23,7 +25,7 @@
                 Add Category
             </a>
             <a 
-                    href="{{ url()->previous() }}"
+                    href="{{ route('products.index') }}"
                     class="block w-full text-center mt-3 text-md text-gray-500 hover:text-gray-700 font-bold transition-colors border border-gray-200 p-2 rounded-lg"
                 >
                     Back
@@ -72,3 +74,4 @@
 
 </body>
 </html>
+@endsection
