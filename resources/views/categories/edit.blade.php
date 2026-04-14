@@ -3,7 +3,7 @@
 @section('title', 'My Site | Edit Category')
 
 @section('content')
-<div class="min-h-screen bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 text-slate-200">
+<div class="min-h-screen bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 text-slate-200 pt-25">
     <div class="max-w-5xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-6">
             <div>

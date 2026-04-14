@@ -1,5 +1,5 @@
 
-<header class="bg-slate-900 border-b border-slate-800 sticky top-0 left-0 w-full z-50 shadow-2xl shadow-slate-950/30">
+<header class="bg-slate-900/40 border-b border-slate-800 fixed top-0 left-0 w-full z-50 shadow-2xl shadow-slate-950/30 backdrop-blur-xl">
     <div class="container mx-auto flex h-16 items-center justify-between px-6 md:px-8">
         <a href="<?php echo e(url('/')); ?>" class="text-lg font-extrabold text-white tracking-tight">
             Product Management
