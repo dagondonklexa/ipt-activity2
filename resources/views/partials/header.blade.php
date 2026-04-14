@@ -1,5 +1,5 @@
 
-<header class="bg-white border-b shadow-lg sticky top-0 left-0 w-full border-none">
+<header class="bg-white/40 border-b shadow-lg sticky top-0 left-0 w-full border-none backdrop-blur-lg">
     <div class="container mx-auto h-16 flex items-center justify-between px-40">
 
 
@@ -8,7 +8,7 @@
         </a>
 
         
-        <nav class="hidden md:flex gap-6 text-gray-700">
+        <nav class="hidden md:flex gap-6 text-gray-700 font-bold">
             <a href="{{ route('products.index') }}" class="hover:text-black hover:underline hover:scale-110 transition-all duration-500">
                 Products
             </a>
@@ -34,7 +34,6 @@
     </div>
 </header>
 
-<!-- Simple toggle script -->
 <script>
     const btn = document.getElementById('menuBtn');
     const menu = document.getElementById('mobileMenu');
