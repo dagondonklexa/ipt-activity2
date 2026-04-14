@@ -1,92 +1,82 @@
-@extends("layouts.app")
+@extends('layouts.app')
 
-@section('title', 'My Site | Category Lists')
+@section('title', 'My Site | Categories')
 
-@section("content")
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Categories</title>
-</head>
-<body>
-    <div class="max-w-4xl mx-auto py-10 sm:py-20 px-4">
-        <!-- Header Section -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+@section('content')
+<div class="min-h-screen bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 text-slate-200">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-6">
             <div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Categories</h2>
-                <p class="text-gray-500 text-sm sm:text-base mt-1">Manage and organize your product classifications.</p>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Categories</h2>
+                <p class="mt-1 text-sm text-slate-400">Manage and organize product classifications for your inventory.</p>
             </div>
-            <div>
-                <a href="{{ route('categories.create') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm sm:text-base font-semibold rounded-lg shadow-sm transition-all active:scale-95">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+
+            <div class="flex flex-wrap gap-3">
+                <a href="{{ route('products.index') }}"
+                    class="inline-flex items-center px-5 py-2.5 border border-slate-700 shadow-sm text-sm font-medium rounded-xl text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white transition-all duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Products
+                </a>
+                <a href="{{ route('categories.create') }}"
+                    class="inline-flex items-center px-5 py-2.5 border border-transparent shadow-lg shadow-indigo-500/20 text-sm font-medium rounded-xl text-white bg-indigo-500 hover:bg-indigo-400 transform hover:-translate-y-0.5 transition-all duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
                     Add Category
                 </a>
             </div>
         </div>
 
-        <!-- Categories Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            @foreach($categories as $category)
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-5 hover:shadow-md transition-shadow">
-                    <div class="flex items-center space-x-3 sm:space-x-4 mb-4">
-                        <!-- Dynamic Color Swatch -->
-                        <div 
-                            class="w-8 sm:w-10 h-8 sm:h-10 rounded-full border border-gray-100 shadow-inner flex-shrink-0"
-                            style="background-color: {{ $category->cat_color }};"
-                        ></div>
-                        
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-bold text-gray-800 text-sm sm:text-base truncate">
-                                {{ $category->cat_name }}
-                            </h3>
-                            <code class="text-xs text-gray-400 font-mono uppercase block truncate">
-                                {{ $category->cat_color }}
-                            </code>
+        <div class="bg-slate-900 rounded-3xl shadow-2xl border border-slate-800 overflow-hidden">
+            <div class="p-6 sm:p-8">
+                <div class="grid gap-6 lg:grid-cols-3">
+                    <div class="lg:col-span-3 bg-slate-950/50 rounded-3xl border border-slate-800 p-6">
+                        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            @forelse($categories as $category)
+                                <div class="rounded-3xl border border-slate-800 bg-slate-950/40 p-5 shadow-sm transition hover:border-indigo-500/30 hover:shadow-indigo-500/10">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="h-10 w-10 rounded-full border border-slate-700 shadow-inner" style="background-color: {{ $category->cat_color }}"></div>
+                                        <div>
+                                            <h3 class="text-sm font-semibold text-white truncate">{{ $category->cat_name }}</h3>
+                                            <p class="text-xs uppercase text-slate-500 mt-1 truncate">{{ $category->cat_color }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex gap-3">
+                                        <a href="{{ route('categories.edit', $category->id) }}" class="flex-1 rounded-2xl border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-200 text-center hover:border-indigo-500 hover:bg-slate-800 transition">
+                                            Edit
+                                        </a>
+                                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Delete this category?')" class="flex-1">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="w-full rounded-2xl border border-slate-700 bg-rose-900 px-3 py-2 text-xs font-semibold text-white hover:bg-rose-800 transition">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="lg:col-span-3 rounded-3xl border border-slate-800 bg-slate-950/40 p-10 text-center">
+                                    <div class="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-full bg-slate-800 text-slate-400 mb-4">
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-slate-400 font-medium">No categories found yet.</p>
+                                    <a href="{{ route('categories.create') }}" class="mt-3 inline-flex rounded-2xl border border-indigo-500 bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-300 hover:bg-indigo-500/20 transition">
+                                        Add your first category
+                                    </a>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
-
-                    <!-- Action Buttons -->
-                    <div class="flex gap-2">
-                        <a href="{{ route('categories.edit', $category->id) }}"
-                           class="flex-1 px-2 sm:px-3 py-1.5 sm:py-2 bg-blue-500 text-white text-xs sm:text-sm font-semibold rounded hover:bg-blue-600 transition text-center">
-                           Edit
-                        </a>
-                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Delete this category?')" class="flex-1">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                    class="w-full px-2 sm:px-3 py-1.5 sm:py-2 bg-red-800 text-white text-xs sm:text-sm font-semibold rounded hover:bg-red-900 transition">
-                                Delete
-                            </button>
-                        </form>
-                    </div>
                 </div>
-            @endforeach
-
-            <!-- Empty State (Optional) -->
-            @if($categories->isEmpty())
-                <div class="col-span-full py-8 sm:py-12 text-center bg-gray-100 rounded-xl border-2 border-dashed border-gray-300">
-                    <p class="text-sm sm:text-base text-gray-500">No categories found. Start by adding one!</p>
-                </div>
-            @endif
+            </div>
         </div>
 
-        <!-- Back Button -->
-        <div class="mt-6 sm:mt-8">
-            <a 
-                href="{{ route('products.index') }}"
-                class="inline-block text-sm sm:text-base text-gray-500 hover:text-gray-700 font-bold transition-colors border border-gray-200 px-4 py-2 rounded-lg"
-            >
-                Back
-            </a>
-        </div>
+        <div class="mt-6 text-center text-xs text-slate-500 italic">Categories help you group products and improve inventory filtering.</div>
     </div>
-
-</body>
-</html>
+</div>
 @endsection

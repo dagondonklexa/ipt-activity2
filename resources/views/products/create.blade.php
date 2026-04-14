@@ -1,108 +1,150 @@
 
-@extends("layouts.app")
+@extends('layouts.app')
 
-@section('title', 'My Site | Create Product')
+@section('title', 'My Site | Add Product')
 
+@section('content')
+<div class="min-h-screen bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 text-slate-200">
+    <div class="max-w-5xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold text-white tracking-tight">Add Product</h2>
+                <p class="mt-1 text-sm text-slate-400">Create a new inventory item and assign it to a category.</p>
+            </div>
 
-@section("content")
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Add Product Form</title>
-</head>
-<body>
-    <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-100 p-8 flex justify-center items-center container mx-auto flex-col my-30">
-        <div class="mb-8">
-            <h2 class="text-2xl font-bold text-gray-800">Add New Product</h2>
-            <p class="text-gray-500 text-sm mt-1">Fill in the details below to add a product to your inventory.</p>
+            <div class="flex flex-wrap gap-3">
+                <a href="{{ route('products.index') }}"
+                    class="inline-flex items-center px-5 py-2.5 border border-slate-700 shadow-sm text-sm font-medium rounded-xl text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white transition-all duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Products
+                </a>
+                <a href="{{ route('categories.index') }}"
+                    class="inline-flex items-center px-5 py-2.5 border border-slate-700 shadow-sm text-sm font-medium rounded-xl text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white transition-all duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                    </svg>
+                    View Categories
+                </a>
+            </div>
         </div>
 
-        <form method="POST" action="{{ route('products.store') }}" class="space-y-5 w-full">
-            <!-- CSRF Token (Laravel) -->
-            @csrf
+        <div class="bg-slate-900 rounded-3xl shadow-2xl border border-slate-800 overflow-hidden">
+            <div class="grid gap-8 lg:grid-cols-[1.4fr_0.9fr] p-8">
+                <div class="space-y-6">
+                    <div class="rounded-3xl bg-slate-950/60 border border-slate-800 p-6">
+                        <h3 class="text-xl font-semibold text-white">Product information</h3>
+                        <p class="mt-2 text-sm text-slate-400">Add the product name, price, and category to register this item in the inventory.</p>
+                    </div>
 
-            <!-- Product Name -->
-            <div class="w-ful">
-                <label for="name" class="block text-sm font-semibold text-gray-700 mb-1">Product Name</label>
-                <input 
-                    type="text" 
-                    name="name" 
-                    id="name"
-                    placeholder="e.g. Wireless Headphones" 
-                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400"
-                >
-                @error('name')
-                    <p class="text-red-500 text-sm py-2">{{ $message }}</p>
-                @enderror
-            </div>
+                    <form method="POST" action="{{ route('products.store') }}" class="space-y-6">
+                        @csrf
 
-            <!-- Price -->
-            <div>
-                <label for="price" class="block text-sm font-semibold text-gray-700 mb-1">Price ($)</label>
-                <div class="relative">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                    <input 
-                        type="text" 
-                        name="price" 
-                        id="price"
-                        placeholder="0.00" 
-                        class="w-full pl-8 pr-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-gray-400"
-                    >
-                    @error('price')
-                        <p class="text-red-500 text-sm py-2">{{ $message }}</p>
-                    @enderror
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-slate-200 mb-2">Product Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                value="{{ old('name') }}"
+                                placeholder="Wireless Headphones"
+                                class="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                            >
+                            @error('name')
+                                <p class="mt-2 text-sm text-rose-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="price" class="block text-sm font-semibold text-slate-200 mb-2">Price</label>
+                            <div class="relative">
+                                <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">₱</span>
+                                <input
+                                    type="text"
+                                    name="price"
+                                    id="price"
+                                    value="{{ old('price') }}"
+                                    placeholder="0.00"
+                                    class="w-full rounded-2xl border border-slate-700 bg-slate-950 px-10 py-3 text-slate-100 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                                >
+                            </div>
+                            @error('price')
+                                <p class="mt-2 text-sm text-rose-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="category_id" class="block text-sm font-semibold text-slate-200 mb-2">Category</label>
+                            <select
+                                name="category_id"
+                                id="category_id"
+                                class="w-full rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                            >
+                                <option value="" disabled selected>Select Category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->cat_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <p class="mt-2 text-sm text-rose-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                            <button
+                                type="submit"
+                                class="inline-flex justify-center items-center rounded-2xl bg-indigo-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-400 transition-all duration-200"
+                            >
+                                Save Product
+                            </button>
+                            <a
+                                href="{{ route('products.index') }}"
+                                class="inline-flex justify-center items-center rounded-2xl border border-slate-700 bg-slate-800 px-6 py-3 text-sm font-semibold text-slate-200 hover:border-slate-600 hover:bg-slate-700 transition-all duration-200"
+                            >
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
                 </div>
-            </div>
 
-            <!-- Category -->
-            <div>
-                <label for="category_id" class="block text-sm font-semibold text-gray-700 mb-1">Category</label>
-                <select 
-                    name="category_id" 
-                    id="category_id"
-                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all appearance-none cursor-pointer"
-                >
-                    <option value="" disabled selected>Select Category</option>
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">
-                            {{ $category->cat_name }}
-                        </option>
-                    @endforeach
-                </select>
-                 @error('category_id')
-                    <p class="text-red-500 text-sm py-2">{{ $message }}</p>
-                @enderror
-                <!-- Custom Arrow Icon for Select -->
-                <div class="relative">
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 -top-10">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                <div class="space-y-6">
+                    <div class="rounded-3xl border border-slate-800 bg-slate-950/40 p-6">
+                        <h3 class="text-lg font-semibold text-white">Product tips</h3>
+                        <ul class="mt-4 space-y-3 text-sm text-slate-400">
+                            <li class="flex gap-3 items-start">
+                                <span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-indigo-400"></span>
+                                Use a concise product name that is easy to scan.
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-indigo-400"></span>
+                                Set the price with two decimal places to keep formatting consistent.
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-indigo-400"></span>
+                                Choose a category so the item appears in filtered inventory views.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="rounded-3xl border border-slate-800 bg-slate-950/40 p-6">
+                        <h3 class="text-lg font-semibold text-white">Quick actions</h3>
+                        <div class="mt-4 space-y-3">
+                            <a href="{{ route('products.index') }}" class="block rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-200 hover:bg-slate-800 transition-all duration-200">
+                                View all products
+                            </a>
+                            <a href="{{ route('categories.index') }}" class="block rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-200 hover:bg-slate-800 transition-all duration-200">
+                                Manage categories
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Action Buttons -->
-            <div class="pt-4 flex items-center gap-3">
-                <button 
-                    type="submit" 
-                    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-md shadow-blue-200 active:transform active:scale-[0.98]"
-                >
-                    Save Product
-                </button>
-                <a 
-                    type="button"
-                    class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-600 font-semibold rounded-lg transition-colors"
-                    href="{{ url()->previous() }}"
-                >
-                    Cancel
-                </a>
-            </div>
-            
-        </form>
+        <div class="mt-6 text-center text-xs text-slate-500 italic">Use this form to register a new product in inventory.</div>
     </div>
-
-</body>
-</html>
+</div>
 @endsection
