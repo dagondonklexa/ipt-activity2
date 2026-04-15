@@ -1,34 +1,29 @@
 
-<header class="bg-white/40 border-b shadow-lg sticky top-0 left-0 w-full border-none backdrop-blur-lg">
-    <div class="container mx-auto h-16 flex items-center justify-between px-40">
-
-
-        <a href="<?php echo e(url('/')); ?>" class="font-extrabold text-xl">
+<header class="bg-slate-900/40 border-b border-slate-800 fixed top-0 left-0 w-full z-50 shadow-2xl shadow-slate-950/30 backdrop-blur-xl">
+    <div class="container mx-auto flex h-16 items-center justify-between px-6 md:px-8">
+        <a href="<?php echo e(url('/')); ?>" class="text-lg font-extrabold text-white tracking-tight bg-gray-400 px-3 py-1 rounded-lg shadow-lg shadow-gray-500/20">
             Product Management
         </a>
 
-        
-        <nav class="hidden md:flex gap-6 text-gray-700 font-bold">
-            <a href="<?php echo e(route('products.index')); ?>" class="hover:text-black hover:underline hover:scale-110 transition-all duration-500">
+        <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-300">
+            <a href="<?php echo e(route('products.index')); ?>" class="hover:text-white hover:underline transition-colors duration-200">
                 Products
             </a>
-            <a href="<?php echo e(route('categories.index')); ?>" class="hover:text-black hover:underline hover:scale-110 transition-all  duration-500">
+            <a href="<?php echo e(route('categories.index')); ?>" class="hover:text-white hover:underline transition-colors duration-200">
                 Categories
             </a>
         </nav>
 
-
-        <button id="menuBtn" class="md:hidden text-2xl">
+        <button id="menuBtn" class="md:hidden text-2xl text-slate-300 hover:text-white transition-colors duration-200">
             ☰
         </button>
     </div>
 
-
-    <div id="mobileMenu" class="hidden md:hidden border-t px-4 py-3 space-y-3">
-        <a href="<?php echo e(route('products.index')); ?>" class="block">
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-slate-950 px-4 py-3 space-y-3">
+        <a href="<?php echo e(route('products.index')); ?>" class="block rounded-2xl px-4 py-2 text-slate-200 hover:bg-slate-900 hover:text-white transition-colors duration-200">
             Products
         </a>
-        <a href="<?php echo e(route('categories.index')); ?>" class="block">
+        <a href="<?php echo e(route('categories.index')); ?>" class="block rounded-2xl px-4 py-2 text-slate-200 hover:bg-slate-900 hover:text-white transition-colors duration-200">
             Categories
         </a>
     </div>

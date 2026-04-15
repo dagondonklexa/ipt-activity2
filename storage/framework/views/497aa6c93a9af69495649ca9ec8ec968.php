@@ -3,7 +3,7 @@
 <?php $__env->startSection('title', 'My Site | Product List'); ?>
 
 <?php $__env->startSection('content'); ?>
-<div class="min-h-screen bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 text-slate-200">
+<div class="min-h-screen bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 text-slate-200 pt-25">
     <div class="max-w-6xl mx-auto">
         
         <!-- Header Section -->

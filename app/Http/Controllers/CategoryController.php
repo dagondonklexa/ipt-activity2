@@ -33,33 +33,7 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index')->with('success', 'Category added successfully');
     }
-
-    public function edit(Category $category)
-    {
-        return view('categories.edit', compact('category'));
-    }
-
-    public function update(Request $request, Category $category)
-    {
-        $request->validate([
-            'cat_name' => ['required', 'min:3', 'max:255'],
-            'cat_color' => ['required', 'min:3', 'max:255']
-        ]);
-
-        if(Category::where('cat_name', $request->cat_name)->where('id', '!=', $category->id)->exists()) {
-            return redirect()->back()->withErrors(['cat_name' => 'The category name has already been taken.']);
-        }
-
-        $category->update($request->all());
-
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
-    }
-
-    public function destroy(Category $category)
-    {
-        $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
-    }
+   
 }
 
 //     /**

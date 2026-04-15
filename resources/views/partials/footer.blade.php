@@ -1,4 +1,4 @@
-<footer class="bg-gray-900 text-gray-300 mt-10">
+<footer class="bg-slate-900 border-t border-slate-800 text-slate-300 ">
     <div class="max-w-6xl mx-auto px-6 py-10">
 
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -8,23 +8,23 @@
                 <h2 class="text-white text-lg font-semibold">
                     Product Management System
                 </h2>
-                <p class="text-sm text-gray-400 mt-1">
+                <p class="text-sm text-slate-400 mt-1">
                     Manage products and categories easily
                 </p>
             </div>
 
             <!-- Center Links -->
             <div class="flex gap-6 text-sm">
-                <a href="{{ route('products.index') }}" class="hover:text-white transition">
+                <a href="{{ route('products.index') }}" class="text-slate-300 hover:text-white transition-colors duration-200">
                     Products
                 </a>
-                <a href="{{ route('categories.index') }}" class="hover:text-white transition">
+                <a href="{{ route('categories.index') }}" class="text-slate-300 hover:text-white transition-colors duration-200">
                     Categories
                 </a>
             </div>
 
             <!-- Right -->
-            <div class="text-sm text-gray-400 text-center md:text-right">
+            <div class="text-sm text-slate-400 text-center md:text-right">
                 © {{ date('Y') }} All Rights Reserved
             </div>
 
